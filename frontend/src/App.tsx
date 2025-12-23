@@ -1,5 +1,15 @@
+import {router} from "./routes/router"
+import {RouterProvider} from "react-router"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 function App() {
-  return <div className="h-max bg-blue-600">Hello World</div>
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

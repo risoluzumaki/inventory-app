@@ -2,9 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev" : "ts-node src/index.js"
+    "dev" : "ts-node src/server.ts",
+    "build" : "tsc",
+    "preview" : "node dist/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

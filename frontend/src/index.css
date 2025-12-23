@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+* {
+  border: 2px 2px ;
+}
+
+button {
+  cursor: pointer;
+}
+
