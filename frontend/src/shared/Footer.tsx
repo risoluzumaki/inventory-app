@@ -1,5 +1,5 @@
 export default function Footer(){
   return (
-    <div className="w-full bg-black text-white font-semibold text-center">Inventory App v1</div>
+    <div className="border-2 fixed bottom-0 w-full font-semibold text-center p-4">Inventory App Prototype</div>
   )
 }

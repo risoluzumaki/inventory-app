@@ -13,7 +13,7 @@ export async function stockOutItem(payload: {
   reason?: string
 }): Promise<StockOut> {
   try {
-    const res = await api.post('/stock-outs', payload)
+    const res = await api.post('/stock-out', payload)
     return res.data
   } catch (error: any) {
     if (error.response){

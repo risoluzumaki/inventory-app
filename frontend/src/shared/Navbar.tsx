@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export default function Navbar(){
   return (
-    <nav className="bg-gray-800 text-white p-4">
+    <nav className="p-4 fixed w-full z-10 top-0 border-2">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/home" className="font-bold text-xl">InventoryApp</Link>
+        <Link to="/" className="font-bold text-xl">InventoryApp Prototype</Link>
         <div className="flex gap-4">
           <Link to="/home" className="hover:text-gray-300">Home</Link>
           <Link to="/reservation" className="hover:text-gray-300">Reservations</Link>

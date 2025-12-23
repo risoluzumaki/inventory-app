@@ -12,7 +12,7 @@ export default function useReserve(){
     }
   })
 
-  const {data: reserveHistory, isLoading: reserveHistoryIsLoading, isError: reserveHistoryIsError}= useQuery({
+  const {data: reserveHistory, isLoading: reserveHistoryIsLoading, isError: reserveHistoryIsError, error: reserveHistoryError}= useQuery({
     queryKey: ['reservations'],
     queryFn: getReservationHistory,
   })
@@ -25,6 +25,7 @@ export default function useReserve(){
     reserveError,
     reserveHistory,
     reserveHistoryIsLoading,
-    reserveHistoryIsError
+    reserveHistoryIsError,
+    reserveHistoryError
   }
 }

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllItems } from "../service/item.service";
 
 export default function useItem(){
-  const {data: itemData, isLoading: itemIsLoading, isError: itemIsError} = useQuery({
+  const {data: itemData, isLoading: itemIsLoading, isError: itemIsError, error: itemError} = useQuery({
     queryKey: ['items'],
     queryFn: getAllItems,
   })
@@ -10,6 +10,7 @@ export default function useItem(){
   return {
     itemData,
     itemIsLoading,
-    itemIsError
+    itemIsError,
+    itemError
   }
 }

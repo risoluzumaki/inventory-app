@@ -11,14 +11,14 @@ export default function Landing() {
         <div className="flex justify-center mb-4">
           <Icon
             icon="mdi:warehouse"
-            className="text-blue-600"
+            className="text-black"
             width={64}
             height={64}
           />
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl font-bold text-blue-700 mb-2">
+        <h1 className="text-3xl font-bold mb-2">
           Inventory App
         </h1>
 
@@ -30,8 +30,8 @@ export default function Landing() {
         {/* Button */}
         <button
           onClick={() => navigate('/home')}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg
-                     hover:bg-blue-700 transition"
+          className="px-6 py-2 rounded-lg
+                     bg-black hover:bg-slate-800 text-white"
         >
           Go to Home
         </button>

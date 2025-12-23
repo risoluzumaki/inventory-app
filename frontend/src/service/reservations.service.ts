@@ -3,7 +3,8 @@ import api from "../api/api"
 export type Reservation = {
   id: string
   itemId: string
-  quantity: number
+  quantity: number,
+  createdAt: string
 }
 
 export async function reserveStock(payload: {

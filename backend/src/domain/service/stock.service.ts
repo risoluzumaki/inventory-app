@@ -27,7 +27,7 @@ export class StockService {
     }
 
     if (item.stock < quantity) {
-      console.log("Insufficient stock execution")
+      // console.log("Insufficient stock execution")
       throw new AppError("Insufficient stock", 400);
     }
 
@@ -38,7 +38,7 @@ export class StockService {
       id: crypto.randomUUID(),
       itemId,
       quantity,
-      // createdAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
     };
 
     this.reservationRepo.create(reservation);

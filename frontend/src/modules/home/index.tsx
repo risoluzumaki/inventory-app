@@ -1,45 +1,62 @@
 import { useState } from "react"
 import useItem from "../../hooks/useItem"
 import FormModalReserve from "./component/FormModalReserve"
+import FormModalStockOut from "./component/FormModalStock"
+import Navbar from "../../shared/Navbar"
+import Footer from "../../shared/Footer"
 
 export default function Home() {
-  const { itemData, itemIsLoading } = useItem()
+  const { itemData, itemIsLoading, itemIsError } = useItem()
 
-  const [selectedItem, setSelectedItem] = useState<{
+  const [selectedItemReserve, setSelectedItemReserve] = useState<{
     id: string
     name: string
   } | null>(null)
 
-  if (itemIsLoading) {
-    return <div>Loading...</div>
-  }
+  const [selectedItemStock, setSelectedItemStock] = useState<{
+    id: string,
+    name: string
+  } | null>(null)
 
   return (
-    <main className="p-6">
-      <div className="grid gap-4">
+    <main className="h-screen flex justify-center items-center">
+      <Navbar />
+      {itemIsLoading && <p>Loading...</p>}
+      {itemIsError && <p>Error...</p>}
+      <div className="wrapper flex gap-1">
         {itemData?.map(item => (
-          <div key={item.id} className="border p-4 rounded">
+          <div key={item.id} className="border-2 p-4 rounded">
             <h2>{item.name}</h2>
             <p>Stock: {item.stock}</p>
 
             <button
-              onClick={() => setSelectedItem(item)}
-              className="mt-2"
+              onClick={() => setSelectedItemReserve(item)}
+              className="mt-2 rounded-md px-4 py-1 mr-2.5 border-2"
             >
-              Reserve
+              Reserves
             </button>
+            <button className="mt-2 rounded-md px-4 py-1 border-2" onClick={() => setSelectedItemStock({id: item.id, name: item.name})}>Stock Out</button>
           </div>
         ))}
       </div>
 
-      {/* Modal */}
-      {selectedItem && (
+      {/* Modal Reserve */}
+      {selectedItemReserve && (
         <FormModalReserve
           isOpen={true}
-          item={selectedItem}
-          onClose={() => setSelectedItem(null)}
+          item={selectedItemReserve}
+          onClose={() => setSelectedItemReserve(null)}
         />
       )}
+
+      {selectedItemStock && (
+        <FormModalStockOut
+          isOpen={true}
+          item={selectedItemStock}
+          onClose={() => setSelectedItemStock(null)}
+        />
+      )}
+      <Footer />
     </main>
   )
 }

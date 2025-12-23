@@ -12,7 +12,7 @@ export default function useStock(){
     }
   })
 
-  const {data: stockHistory, isLoading: stockHistoryIsLoading, isError: stockHistoryIsError}= useQuery({
+  const {data: stockHistory, isLoading: stockHistoryIsLoading, isError: stockHistoryIsError, error: stockHistoryError}= useQuery({
     queryKey: ['stock-outs'],
     queryFn: getStockOutHistory,
   })
@@ -24,6 +24,8 @@ export default function useStock(){
     stockError,
     stockHistory,
     stockHistoryIsLoading,
-    stockHistoryIsError
+    stockHistoryIsError,
+    stockHistoryError
+
   }
 }
