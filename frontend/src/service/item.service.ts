@@ -7,6 +7,14 @@ export type Item = {
 }
 
 export async function getAllItems(): Promise<Item[]> {
-  const res = await api.get('/items')
-  return res.data
+  try {
+    const res = await api.get('/items')
+    return res.data
+  } catch (error: any) {
+    if (error.response){
+      throw new Error(error.response.data.message) 
+    } else {
+      throw new Error("Something went wrong")
+    }
+  }
 }

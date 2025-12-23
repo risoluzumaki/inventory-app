@@ -2,19 +2,37 @@ import api from "../api/api"
 
 export type StockOut = {
   id: string
-  itemId: string
+  itemId: string,
+  quantity: number,
   reason?: string
 }
 
 export async function stockOutItem(payload: {
   itemId: string
+  quantity: number
   reason?: string
 }): Promise<StockOut> {
-  const res = await api.post('/stock-outs', payload)
-  return res.data
+  try {
+    const res = await api.post('/stock-outs', payload)
+    return res.data
+  } catch (error: any) {
+    if (error.response){
+      throw new Error(error.response.data.message) 
+    } else {
+      throw new Error("Something went wrong")
+    }
+  }
 }
 
 export async function getStockOutHistory(): Promise<StockOut[]> {
-  const res = await api.get('/stock-outs')
-  return res.data
+  try {
+    const res = await api.get('/stock-outs')
+    return res.data
+  } catch (error: any) {
+    if (error.response){
+      throw new Error(error.response.data.message) 
+    } else {
+      throw new Error("Something went wrong")
+    }
+  }
 }

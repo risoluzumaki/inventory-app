@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 export default function useStock(){
   const queryClient = useQueryClient()
 
-  const {mutate: stockMutate, isPending: stockIsLoading, isError: stockIsError} = useMutation({
+  const {mutate: stockMutate, isPending: stockIsLoading, isError: stockIsError, error: stockError} = useMutation({
     mutationFn: stockOutItem,
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey: ['stock-outs']})
@@ -21,6 +21,7 @@ export default function useStock(){
     stockMutate,
     stockIsLoading,
     stockIsError,
+    stockError,
     stockHistory,
     stockHistoryIsLoading,
     stockHistoryIsError

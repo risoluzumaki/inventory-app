@@ -10,11 +10,26 @@ export async function reserveStock(payload: {
   itemId: string
   quantity: number
 }): Promise<Reservation> {
-  const res = await api.post('/reservations', payload)
-  return res.data
+  try {
+    const res = await api.post('/reserve', payload)
+    return res.data
+  } catch (error: any) {
+    if (error.response){
+      throw new Error(error.response.data.message) 
+    } else {
+      throw new Error("Something went wrong")
+    }
+  }
 }
 
 export async function getReservationHistory(): Promise<Reservation[]> {
-  const res = await api.get('/reservations')
-  return res.data
+  try {
+    const res = await api.get('/reservations')
+    return res.data
+  } catch (error: any) {
+    if(error.response){
+      throw new Error(error.response.data.message)
+    }
+    throw new Error("Something went wrong")
+  }
 }
