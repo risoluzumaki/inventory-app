@@ -14,10 +14,10 @@ export class StockService {
   ){} 
 
   reserve(itemId: string, quantity: number) {
-    console.log(itemId, quantity);
-    console.log(`type of quantity : ${typeof quantity}`)
+    // console.log(itemId, quantity);
+    // console.log(`type of quantity : ${typeof quantity}`)
     if (quantity <= 0) {
-      console.log("Quantity <= 0 execution")
+      // console.log("Quantity <= 0 execution")
       throw new AppError("Quantity must be greater than zero", 400);
     }
 
@@ -38,7 +38,7 @@ export class StockService {
       id: crypto.randomUUID(),
       itemId,
       quantity,
-      createdAt: new Date().toISOString(),
+      // createdAt: new Date().toISOString(),
     };
 
     this.reservationRepo.create(reservation);
@@ -70,7 +70,7 @@ export class StockService {
       itemId,
       quantity,
       reason,
-      createdAt: new Date().toISOString(),
+      // createdAt: new Date().toISOString(),
     };
 
     this.stockOutRepo.create(stockOut);

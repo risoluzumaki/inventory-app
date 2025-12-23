@@ -9,7 +9,7 @@ class InMemoryDB {
 
   constructor() {
     
-    // Seeding data awal
+    // Seeding data awal/Dummy data
     this.items = [
       { id: "1", name: "Keyboard", stock: 100 },
       { id: "2", name: "Mouse", stock: 50 },
