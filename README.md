@@ -74,28 +74,47 @@ Meskipun reservasi dan stock-out sama-sama mengurangi stok, keduanya memiliki **
 
 ## Cara Menjalankan Project
 
+## Dengan Docker Containerization
 
-## Dengan Docker
-pastikan berada di root saat ini , lalu ketik perintah
+### Docker Compose
+pastikan berada di root project saat ini , lalu ketik perintah
 
 ```
 docker compose -f docker/docker-compose.yml up -d --build
 ```
 
-## Tanpa Docker
+### Container stand alone
+pastikan berada di root project saat ini , lalu ketik perintah
+
+- build
+```
+docker build -f docker/Dockerfile.be -t inventory-app-backend .
+docker build -f docker/Dockerfile.fe -t inventory-app-frontend .
+```
+
+- run
+```
+docker run -d -p 3000:3000 --name inventory-app-backend inventory-app-backend
+docker run -d -p 4173:4173 --name inventory-app-frontend inventory-app-frontend
+```
+! untuk nama image dan nama container running berjalan nya bebas , dan untuk port backend pastikan port 3000 open dan running ada port 3000 baik di jalankan tanpa docker maupun dengan docker 
+
+## Tanpa Docker 
 
 ### Backend
 
 ```bash
+cd backend
 npm install
 npm run dev
 ```
 
-Server akan berjalan pada port yang telah dikonfigurasi (default: 3000).
+Server akan berjalan pada port 3000 (sebenarnya bebas running di port apa saja namun harus pastikan port tersebut tidak digunakan oleh aplikasi lain dan juga pada frontend nya di rubah code nya untuk call api ke backend nya).
 
 ### Frontend
 
 ```bash
+cd frontend
 npm install
 npm run dev
 ```
