@@ -23,6 +23,7 @@ export default function FormModalStockOut({ item, onClose }: Props) {
         itemId: item.id,
         quantity,
         reason,
+        // createdAt: new Date().toISOString(),
       },
       {
         onSuccess: () => {

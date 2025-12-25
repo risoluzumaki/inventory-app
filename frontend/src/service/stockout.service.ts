@@ -4,13 +4,15 @@ export type StockOut = {
   id: string
   itemId: string,
   quantity: number,
-  reason?: string
+  reason?: string,
+  createdAt: string
 }
 
 export async function stockOutItem(payload: {
   itemId: string
   quantity: number
-  reason?: string
+  reason?: string,
+  createdAt?: string
 }): Promise<StockOut> {
   try {
     const res = await api.post('/stock-out', payload)

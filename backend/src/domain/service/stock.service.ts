@@ -70,7 +70,7 @@ export class StockService {
       itemId,
       quantity,
       reason,
-      // createdAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
     };
 
     this.stockOutRepo.create(stockOut);

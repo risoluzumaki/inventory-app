@@ -3,5 +3,5 @@ export type StockOut = {
   itemId: string;
   quantity: number;
   reason?: string;
-  // createdAt: string;
+  createdAt: string;
 };

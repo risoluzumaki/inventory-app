@@ -17,6 +17,7 @@ export default function Stock(){
             <h2>{`item id :${item.itemId}`}</h2>
             <h2>{`quantity :${item.quantity}`}</h2>
             <h2>{`reason :${item.reason}`}</h2>
+            <h2>{`created at :${item.createdAt}`}</h2>
           </div>)
         )}
       </div>
